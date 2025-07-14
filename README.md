@@ -49,7 +49,8 @@ nvcuda_dll_name: nvcuda.dll
 Train, export, Quantize and convert to TensorFlow Lite format a model:
 ```
 ```bash
-python export_tflite_model.py
+cd host_training/tensorflow_model
+python train.py
 ```
 
 ---
