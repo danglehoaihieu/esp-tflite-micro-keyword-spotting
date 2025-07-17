@@ -1,0 +1,9 @@
+menu "Edge Impulse Options"
+
+config EI_CLASSIFIER_ALLOCATION_STATIC
+    bool "Enable static memory allocation for TFLite"
+    default n
+    help
+        Define EI_CLASSIFIER_ALLOCATION_STATIC to allocate tensor arena statically.
+
+endmenu

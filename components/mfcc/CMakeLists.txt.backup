@@ -1,0 +1,28 @@
+set(TFLM_FRONTEND_INCLUDE porting/include/)
+set(TFLM_FRONTEND_SRC porting/src)
+
+# set(TFLM_THIRD_PARTY_FOLDER ../../managed_components/espressif__esp-tflite-micro/third_party)
+# set(KISS_FFT_FOLDER ${TFLM_THIRD_PARTY_FOLDER}/kissfft)
+# set(KISS_FFT_TOOL_FOLDER ${KISS_FFT_FOLDER}/tools)
+
+
+set(include_dirs
+    ${TFLM_FRONTEND_INCLUDE}
+    # ${KISS_FFT_FOLDER}
+    # ${KISS_FFT_TOOL_FOLDER}
+)
+file(GLOB_RECURSE SRC_FILES ${TFLM_FRONTEND_SRC}/*.c)
+file(GLOB_RECURSE TFLM_FRONTEND_CC_FILES ${TFLM_FRONTEND_SRC}/*.cc)
+# file(GLOB_RECURSE KISS_FFT_SRC_FILES ${KISS_FFT_FOLDER}/*.c)
+# file(GLOB_RECURSE KISS_FFT_TOOL_SRC_FILES ${KISS_FFT_TOOL_FOLDER}/*.c)
+
+list(APPEND SRC_FILES ${TFLM_FRONTEND_CC_FILES})
+# list(APPEND SRC_FILES ${KISS_FFT_SRC_FILES})
+# list(APPEND SRC_FILES ${KISS_FFT_TOOL_SRC_FILES})
+
+idf_component_register(SRCS "./src/mfcc_user.c" "${SRC_FILES}" "./kissfft/kiss_fft.c" "./kissfft/tools/kiss_fftr.c"
+                    INCLUDE_DIRS "./include/" "${include_dirs}" "./kissfft" "./kissfft/tools"
+                    )
+
+# Enable fixed-point support
+# target_compile_definitions(${COMPONENT_LIB} PRIVATE FIXED_POINT=8)

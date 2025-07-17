@@ -1,0 +1,1 @@
+xtensa-esp32-elf-nm -C build\esp-idf\mfcc\CMakeFiles\__idf_mfcc.dir\__\__\managed_components\espressif__esp-tflite-micro\third_party\kissfft\tools\kiss_fftr.c.obj | findstr kiss_fftr_alloc

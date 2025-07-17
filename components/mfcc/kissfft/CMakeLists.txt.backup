@@ -1,0 +1,7 @@
+idf_component_register(
+    SRCS "kiss_fft.c" "tools/kiss_fftr.c"
+    INCLUDE_DIRS "." "tools"
+)
+
+# Enable fixed-point support
+target_compile_definitions(${COMPONENT_LIB} PRIVATE FIXED_POINT=16)
